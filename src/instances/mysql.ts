@@ -13,6 +13,12 @@ dotenv.config()
 //     }
 // )
 
-export const sequelize = new Sequelize(
-    "mysql -hcontainers-us-west-65.railway.app -uroot -pKzrXHR3RVny7nagkSIZ5 --port 5682 --protocol=TCP railway"
-)
+export const sequelize = new Sequelize(process.env.MYSQL_DB as string, process.env.MYSQL_USER as string, process.env.MYSQL_PASSWORD, {
+    host: process.env.MYSQL_HOST,
+    port: 5682, // Substitua pelo seu host
+    dialect: 'mysql',
+    dialectOptions: {
+        connectTimeout: 60000, // Tempo limite em milissegundos
+      }, // O dialeto do banco de dados (pode ser 'mysql', 'postgres', 'sqlite', etc.)
+  });
+
