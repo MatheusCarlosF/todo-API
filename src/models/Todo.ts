@@ -21,6 +21,6 @@ export const Todo = sequelize.define<TodoInstance>("Todo", {
         defaultValue: false
     }
 }, {
-    tableName: "todo", 
+    tableName: "todo1", 
     timestamps: false    
 })
